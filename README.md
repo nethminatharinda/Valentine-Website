@@ -17,10 +17,12 @@ It includes smooth animations, modern UI design, and interactive elements to cre
 
 * 💖 Romantic UI design
 * 🎬 Smooth animations and transitions
+* 😂 Tricky Animations
 * 🖱️ Interactive buttons & effects
 * 🎵 Optional background music
 * 📱 Fully responsive (mobile-friendly)
 * 💌 Customizable messages for your loved one
+* 📸 Can add images
 
 ---
 
@@ -37,8 +39,8 @@ It includes smooth animations, modern UI design, and interactive elements to cre
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
-cd REPO_NAME
+git clone https://github.com/nethminatharinda/Valentine-Website.git
+cd Valentine-Website
 ```
 
 Then open:
@@ -84,8 +86,8 @@ This project is open-source and free to use 💖
 
 ## 👑 Author
 
-**NETH**
-💻 Web Developer | 🎬 Video Editor | 🚀 Entrepreneur
+**Nethmina Tharinda**
+💻 Web Developer | 🤖 Discord Bot Developer | 🚀 Entrepreneur
 
 ---
 
