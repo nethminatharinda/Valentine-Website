@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will you be my Valentine? 💖</title>
+
+  <!-- Google Fonts (romantic + modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Sparkly/heart background layers -->
+  <div class="bg" aria-hidden="true">
+    <div class="sparkles" id="sparklesLayer"></div>
+    <div class="heart-layer" id="heartLayer"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- Top bar: toggles + share -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">💝</span>
+      <span class="brand-text">Valentine Quest</span>
+    </div>
+
+    <div class="top-actions">
+      <button class="chip" id="themeToggle" type="button" aria-pressed="false" title="Toggle pink theme">
+        <span class="chip-emoji" aria-hidden="true">🩷</span>
+        <span class="chip-text">Theme</span>
+      </button>
+
+      <button class="chip" id="musicToggle" type="button" aria-pressed="false" title="Toggle soft music">
+        <span class="chip-emoji" aria-hidden="true">🎵</span>
+        <span class="chip-text" id="musicLabel">Music: Off</span>
+      </button>
+
+      <button class="chip" id="shareBtn" type="button" title="Copy share link">
+        <span class="chip-emoji" aria-hidden="true">🔗</span>
+        <span class="chip-text">Share</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME / HERO -->
+    <section class="card hero" id="home">
+      <div class="hero-badge" id="savedBadge" aria-hidden="true">Saved 💖</div>
+
+      <h1 class="title" id="question">Will you be my Valentine? 💖</h1>
+      <p class="subtitle" id="subtitle">
+        I brought hugs, chocolate, and unlimited cheesy jokes 🥰🍫🌹
+      </p>
+
+      <div class="inputs">
+        <div class="field">
+          <label for="nameInput">Valentine’s name (optional)</label>
+          <input id="nameInput" type="text" placeholder="Type their name... 💗" maxlength="24" />
+          <div class="hint">Tip: This will personalize the question + love letter.</div>
+        </div>
+
+        <div class="field">
+          <label for="customDate">Countdown date (optional)</label>
+          <input id="customDate" type="date" />
+          <div class="hint" id="countdownNote">Counting down to Valentine’s Day 💘</div>
+        </div>
+      </div>
+
+      <!-- Buttons area -->
+      <div class="play-area" id="playArea">
+        <button class="btn btn-yes" id="yesBtn" type="button">
+          Yes 💘
+        </button>
+
+        <!-- This button is intentionally mischievous 😈 -->
+        <button class="btn btn-no" id="noBtn" type="button" aria-label="No (playful)">
+          No 💔
+        </button>
+      </div>
+
+      <p class="tiny-hint">
+        Try clicking “No”… if you can 😈✨
+      </p>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="card countdown" id="countdown">
+      <h2 class="section-title">Countdown to our Valentine moment ⏳</h2>
+
+      <div class="timer" role="status" aria-live="polite" aria-label="Countdown timer">
+        <div class="time-box">
+          <span class="num" id="days">00</span>
+          <span class="lbl">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="hours">00</span>
+          <span class="lbl">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="mins">00</span>
+          <span class="lbl">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="secs">00</span>
+          <span class="lbl">Seconds</span>
+        </div>
+      </div>
+
+      <p class="countdown-mini" id="countdownMini">
+        💗 Every second gets me closer to you.
+      </p>
+    </section>
+
+    <!-- LOVE LETTER (hidden until YES) -->
+    <section class="card love-letter hidden" id="letterSection">
+      <div class="letter-top">
+        <h2 class="section-title">My Love Letter 💌</h2>
+        <span class="pill" id="acceptedPill" hidden>Accepted 💖</span>
+      </div>
+
+      <div class="letter-layout">
+        <div class="polaroid">
+          <div class="photo" aria-label="Polaroid photo placeholder">
+            <div class="photo-inner">
+              <span class="photo-emoji" aria-hidden="true">📸</span>
+              <span class="photo-text">Drop your cutest pic here</span>
+              <span class="photo-sub">Replace this placeholder anytime ✨</span>
+            </div>
+          </div>
+          <div class="caption">Us, soon 💞</div>
+        </div>
+
+        <div class="letter-content">
+          <!-- Animated handwritten text goes here -->
+          <p class="handwriting" id="typedLetter"></p>
+
+          <!-- Optional editor -->
+          <div class="editor">
+            <label for="messageInput">Optional: edit the love letter ✍️</label>
+            <textarea id="messageInput" rows="5"></textarea>
+
+            <div class="editor-actions">
+              <button class="mini-btn" id="replayTypeBtn" type="button">Replay handwriting ✨</button>
+              <button class="mini-btn" id="clearSaveBtn" type="button" title="Clear saved 'Yes' in this browser">
+                Reset (local) 🔁
+              </button>
+            </div>
+
+            <p class="hint">
+              Your “Yes” choice is saved in this browser (localStorage) 💖
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="card gallery" id="gallery">
+      <h2 class="section-title">Little Memories 📸💞</h2>
+      <p class="subtitle small">
+        Replace the placeholders with your photos (or keep them cute and symbolic).
+      </p>
+
+      <div class="grid">
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 1">
+          <div class="memory-img">🌷</div>
+          <div class="memory-caption">A tiny moment</div>
+        </a>
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 2">
+          <div class="memory-img">🍫</div>
+          <div class="memory-caption">Sweet like you</div>
+        </a>
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 3">
+          <div class="memory-img">🎡</div>
+          <div class="memory-caption">Fun together</div>
+        </a>
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 4">
+          <div class="memory-img">🌙</div>
+          <div class="memory-caption">Soft nights</div>
+        </a>
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 5">
+          <div class="memory-img">🧸</div>
+          <div class="memory-caption">Cozy vibes</div>
+        </a>
+        <a class="memory" href="javascript:void(0)" aria-label="Memory 6">
+          <div class="memory-img">💌</div>
+          <div class="memory-caption">Little notes</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Made By <span aria-hidden="true">🩷</span> Nethmina Tharinda
+    </footer>
+  </main>
+
+  <!-- Particle layer for confetti/hearts/sparkles -->
+  <div id="effectsLayer" aria-hidden="true"></div>
+
+  <!-- Modal -->
+  <div class="modal hidden" id="loveModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">✕</button>
+      <h3 id="modalTitle" class="modal-title">Yay!! You just made me the happiest person 💕</h3>
+      <p class="modal-text" id="modalText">
+        I’m smiling like CRAZY right now 🥹💗
+      </p>
+      <button class="btn btn-yes modal-btn" id="modalOk" type="button">Aww 🥰</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
